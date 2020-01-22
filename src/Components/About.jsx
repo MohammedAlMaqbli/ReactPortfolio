@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment } from "react";
 
 const About = () => (
   <section className="about-section" id="about">
