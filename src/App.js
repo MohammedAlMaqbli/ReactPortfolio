@@ -7,6 +7,7 @@ import About from "./Components/About";
 import Skills from "./Components/Skills";
 import Work from "./Work";
 import Contact from "./Components/Contact";
+import Footer from "./Footer";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Skills />
         <Work />
         <Contact />
+        <Footer />
       </main>
     </Fragment>
   );
