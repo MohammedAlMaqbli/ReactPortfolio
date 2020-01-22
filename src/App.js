@@ -1,9 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
+import "ionicons/dist/ionicons";
 
-import "./App.css";
+import NavBar from "./Components/NavBar";
 
 const App = () => {
-  return <div></div>;
+  return (
+    <Fragment>
+      <header>
+        <NavBar />
+      </header>
+    </Fragment>
+  );
 };
 
 export default App;
