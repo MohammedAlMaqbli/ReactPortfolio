@@ -1,27 +1,49 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import "ionicons/dist/ionicons";
 import NavBar from "./Components/NavBar";
 import Hero from "./Components/Hero";
 import About from "./Components/About";
 import Skills from "./Components/Skills";
-import Work from "./Work";
+import Work from "./Components/Work";
 import Contact from "./Components/Contact";
-import Footer from "./Footer";
+import Footer from "./Components/Footer";
 import gsap from "gsap";
 import { useIntersection } from "react-use";
 
+function useOnScreen(ref, rootMargin = "0px", threshold = 0) {
+  // State and setter for storing whether element is visible
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Update our state when observer callback fires
+        setIntersecting(entry.isIntersecting);
+      },
+      {
+        rootMargin,
+        threshold
+      }
+    );
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      observer.unobserve(ref.current);
+    };
+  }, []); // Empty array ensures that effect is only run on mount and unmount
+
+  return isIntersecting;
+}
+
 const App = () => {
   // NavBar Animation init
-  const navTl = new gsap.timeline({ paused: true });
+  const navTl = gsap.timeline({ paused: true });
   //Ref .skills-section to animate
   const skillsSection = useRef(null);
   //skillsTimeline Anumation
   const skillsTimeline = gsap.timeline({ defaults: { duration: 1 } });
-  const intersectionSkills = useIntersection(skillsSection, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.2
-  });
+  const intersectionSkills = useOnScreen(skillsSection);
   const animateSkills = () => {
     skillsTimeline
       .fromTo(
@@ -49,9 +71,7 @@ const App = () => {
         { width: "calc(80% - 6px)", ease: "Power4.out" }
       );
   };
-  intersectionSkills && intersectionSkills.intersectionRatio < 0.2
-    ? animateSkills()
-    : console.log("out");
+
   // Website Animation function
   const animate = () => {
     const tl = gsap.timeline({ defaults: { duration: 1 } });
@@ -149,13 +169,17 @@ const App = () => {
     animate();
     animateNav();
   }, []);
+  if (intersectionSkills) {
+    animateSkills();
+  }
+
   return (
     <Fragment>
       <header>
         <NavBar onClick={handelMenuClick} />
         <Hero />
       </header>
-      <main class="animate-in1">
+      <main className="animate-in1">
         <About />
         <Skills forwardRef={skillsSection} />
         <Work />
