@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import "ionicons/dist/ionicons";
 import NavBar from "./Components/NavBar";
 import Hero from "./Components/Hero";
@@ -13,6 +13,45 @@ import { useIntersection } from "react-use";
 const App = () => {
   // NavBar Animation init
   const navTl = new gsap.timeline({ paused: true });
+  //Ref .skills-section to animate
+  const skillsSection = useRef(null);
+  //skillsTimeline Anumation
+  const skillsTimeline = gsap.timeline({ defaults: { duration: 1 } });
+  const intersectionSkills = useIntersection(skillsSection, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2
+  });
+  const animateSkills = () => {
+    skillsTimeline
+      .fromTo(
+        ".bar-html",
+        0.75,
+        { width: "calc(0% - 6px)" },
+        { width: "calc(90% - 6px)", ease: "Power4.out" }
+      )
+      .fromTo(
+        ".bar-css",
+        0.75,
+        { width: "calc(0% - 6px)" },
+        { width: "calc(87% - 6px)", ease: "Power4.out" }
+      )
+      .fromTo(
+        ".bar-javascript",
+        0.75,
+        { width: "calc(0% - 6px)" },
+        { width: "calc(95% - 6px)", ease: "Power4.out" }
+      )
+      .fromTo(
+        ".bar-react",
+        0.75,
+        { width: "calc(0% - 6px)" },
+        { width: "calc(80% - 6px)", ease: "Power4.out" }
+      );
+  };
+  intersectionSkills && intersectionSkills.intersectionRatio < 0.2
+    ? animateSkills()
+    : console.log("out");
   // Website Animation function
   const animate = () => {
     const tl = gsap.timeline({ defaults: { duration: 1 } });
@@ -103,7 +142,7 @@ const App = () => {
     navTl.reverse();
   };
   //  NavBar Animation open and close Nav
-  const handelMenuClick = e => {
+  const handelMenuClick = () => {
     navTl.reversed() ? navTl.play() : navTl.reverse();
   };
   useEffect(() => {
@@ -118,7 +157,7 @@ const App = () => {
       </header>
       <main class="animate-in1">
         <About />
-        <Skills />
+        <Skills forwardRef={skillsSection} />
         <Work />
         <Contact />
         <Footer />

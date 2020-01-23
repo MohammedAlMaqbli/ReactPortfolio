@@ -1,7 +1,7 @@
 import React from "react";
 
-const Skills = () => (
-  <section className="skills-section" id="skills">
+const Skills = ({ forwardRef }) => (
+  <section className="skills-section" id="skills" ref={forwardRef}>
     <h1>
       skills<span className="main-color">.</span>
     </h1>
