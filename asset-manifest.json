@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/ReactPortfolio/static/js/main.fb2c4b03.chunk.js",
+    "main.js.map": "/ReactPortfolio/static/js/main.fb2c4b03.chunk.js.map",
+    "runtime-main.js": "/ReactPortfolio/static/js/runtime-main.8004c86c.js",
+    "runtime-main.js.map": "/ReactPortfolio/static/js/runtime-main.8004c86c.js.map",
+    "static/js/2.4a7ee6df.chunk.js": "/ReactPortfolio/static/js/2.4a7ee6df.chunk.js",
+    "static/js/2.4a7ee6df.chunk.js.map": "/ReactPortfolio/static/js/2.4a7ee6df.chunk.js.map",
+    "index.html": "/ReactPortfolio/index.html",
+    "precache-manifest.3b46c6b6cdfe2f4b68c8f6462ebdbc38.js": "/ReactPortfolio/precache-manifest.3b46c6b6cdfe2f4b68c8f6462ebdbc38.js",
+    "service-worker.js": "/ReactPortfolio/service-worker.js",
+    "static/js/2.4a7ee6df.chunk.js.LICENSE": "/ReactPortfolio/static/js/2.4a7ee6df.chunk.js.LICENSE",
+    "static/media/1.jpg": "/ReactPortfolio/static/media/1.954b0f36.jpg",
+    "static/media/2.jpg": "/ReactPortfolio/static/media/2.f15cefd7.jpg",
+    "static/media/4.jpg": "/ReactPortfolio/static/media/4.dd5f2364.jpg",
+    "static/media/ring.png": "/ReactPortfolio/static/media/ring.5212c2e2.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8004c86c.js",
+    "static/js/2.4a7ee6df.chunk.js",
+    "static/js/main.fb2c4b03.chunk.js"
+  ]
+}
